@@ -2,9 +2,12 @@
 
 Interactive workbooks to help you master the skills you need to be an effective data scientist.
 
-## Data Science Mastery Part I - Numpy and Matplotlib
+# Getting Started
+Check out the medium posts for detailed instructions if you are not familiar with running IPython notebooks.
 
-## Data Science Mastery Part II - Pandas and Seaborn
+I recomend that you go through the workbooks in the following order as they do build on each other.
 
-## Data Science Mastery Part III - Linear Algebra
-
+- Numpy and Matplotlib
+- Pandas and Seaborn
+- Linear Algebra Foundations
+- Linear Algebra Algorithms
