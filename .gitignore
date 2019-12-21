@@ -1,8 +1,2 @@
-# Ignore everything
-*
-
-# But not these files...
-!.gitignore
-!README.md
-!*.ipynb
-!/img/
+*.npy
+*.npz
