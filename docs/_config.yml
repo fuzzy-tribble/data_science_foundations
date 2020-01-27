@@ -1,0 +1,55 @@
+# Site settings
+
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Data Science Mastery
+author: nancynobody
+# email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  The purpose of this site is to help you become comfortable in core Python concepts.
+  It was originally written with data science practitioners in mind but is applicable
+  to anyone learning Python or wanting to brush up on it if you haven't used it for a while.
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# baseurl: "" # the subpath of your site, e.g. /blog
+# twitter_username: nancynobody
+github_username:  nancynobody
+
+# Site Collections (like posts but without pesky date/time requirements)
+collections:
+  notebooks:
+    output: true
+
+# NB Info will be included at the top of each nb page that is built
+# Use an empty string if you don't want any nb_info
+nb_info: >-
+  <!--NB_INFO-->
+  <sub><sup>
+  The content for this site available 
+  <a href="https://github.com/nancynobody/python3_fluency">on GitHub</a>. 
+  If you want to launch the notebooks interactively click on the binder stamp below.
+  <a href="https://mybinder.org/v2/gh/nancynobody/python3_fluency/master"><img src="https://mybinder.org/badge_logo.svg" alt="Binder"></a>
+  </sup></sub>
+
+# Customize navigation links
+header_pages:
+  - pages/about.md
+
+# Build settings
+remote_theme: nancynobody/minima-ipynb
+
+plugins:
+ - jekyll-seo-tag
+ - jekyll-feed
+
+# Google Analytics (will only appear in production, i.e., JEKYLL_ENV=production)
+# To enable, add the following lines to your Jekyll site
+#   google_analytics: UA-NNNNNNNN-N
+
+# Social Networks
+# To add links to your SM accounts with icon, add the appropriate lines below
+minima:
+  social_links:
+    github: nancynobody
+    youtube: jekyll
