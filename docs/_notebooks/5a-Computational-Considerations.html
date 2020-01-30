@@ -1,0 +1,281 @@
+---
+layout: notebook
+title: Computational Considerations in LA for Data Scientsts
+permalink: /computational-considerations-in-la-for-data-scientsts/
+topics: ['Computational resource monitoring ']
+---
+{{site.nb_info}}
+<br><br><!-- NAV --><p style="font-style:italic;font-size:smaller;">&lt; <a href="{{ "linear-algebra-foundations-for-machine-learning-and-data-science" | relative_url }}">Linear Algebra Foundations for Machine Learning and Data Science</a> | <a href="{{ "/" | relative_url }}">Contents</a> | <a href="{{ "linear-algebra-algorithms-for-data-science" | relative_url }}">Linear Algebra Algorithms for Data Science</a> &gt;</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Computational-Considerations-in-LA-for-Data-Scientsts">Computational Considerations in LA for Data Scientsts<a class="anchor-link" href="#Computational-Considerations-in-LA-for-Data-Scientsts">&#182;</a></h1><p><strong>Purpose:</strong> The purpose of this workbook is to help you get comfortable with the topics outlined below.</p>
+<p><strong>Prereqs</strong></p>
+<ul>
+<li>Python Fundamentals Workbook or a good grasp of basic Python</li>
+<li>Numpy Workbook or a good grasp of creating and manipulating numpy arrays</li>
+</ul>
+<p><strong>Recomended Usage</strong></p>
+<ul>
+<li>Run each of the cells (Shift+Enter) and edit them as necessary to solidify your understanding</li>
+<li>Do any of the exercises that are relevant to helping you understand the material</li>
+</ul>
+<p><strong>Topics Covered</strong></p>
+<ul>
+<li>Computational resource monitoring (speed and memory)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Computational-Resource-Monitoring-(speed-and-memory)">Computational Resource Monitoring (speed and memory)<a class="anchor-link" href="#Computational-Resource-Monitoring-(speed-and-memory)">&#182;</a></h1><p>Computational linear algebra calculations on large datasets can be time and memoty intensive, here are some techniques help monitor computational resources.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Memory-Usage:-psutil">Memory Usage: <code>psutil</code><a class="anchor-link" href="#Memory-Usage:-psutil">&#182;</a></h2><p>We can use <code>psutil</code> to inspect memory usage of our operation</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">psutil</span><span class="o">,</span> <span class="nn">os</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">vms</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">rss</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(4669505536, 75243520)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mem_usage</span><span class="p">():</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">total</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mem_usage</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Speed:-%timeit-and-tqdm">Speed: <code>%timeit</code> and <code>tqdm</code><a class="anchor-link" href="#Speed:-%timeit-and-tqdm">&#182;</a></h2><p>The <code>%timeit</code> magic is really useful because we can place it at the top of a cell and it will tell us how long it takes the cell to run.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check out the example below</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="n">timeit</span> 
+
+<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.53 µs ± 36.4 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also use <a href="https://github.com/tqdm/tqdm">TQDM</a> to see progress bars.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)):</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>100%|██████████| 10/10 [00:02&lt;00:00,  4.89it/s]</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>45
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Additional-Resources">Additional Resources<a class="anchor-link" href="#Additional-Resources">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://numpy.org/doc/">Numpy Docs</a></p>
+<p><a href="https://nbviewer.jupyter.org/github/fastai/numerical-linear-algebra/tree/master/">Numerical Linear Algebra (by Rachel Thomas, Fastai)</a></p>
+
+</div>
+</div>
+</div>
+ 
+
+
+<br><br><!-- NAV --><p style="font-style:italic;font-size:smaller;">&lt; <a href="{{ "linear-algebra-foundations-for-machine-learning-and-data-science" | relative_url }}">Linear Algebra Foundations for Machine Learning and Data Science</a> | <a href="{{ "/" | relative_url }}">Contents</a> | <a href="{{ "linear-algebra-algorithms-for-data-science" | relative_url }}">Linear Algebra Algorithms for Data Science</a> &gt;</p>
