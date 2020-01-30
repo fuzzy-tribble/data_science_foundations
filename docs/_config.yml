@@ -46,7 +46,7 @@ plugins:
 
 # Google Analytics (will only appear in production, i.e., JEKYLL_ENV=production)
 # To enable, add the following lines to your Jekyll site
-#   google_analytics: UA-NNNNNNNN-N
+google_analytics: UA-65929619-2
 
 # Social Networks
 # To add links to your SM accounts with icon, add the appropriate lines below
