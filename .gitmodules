@@ -1,0 +1,3 @@
+[submodule "nbconvertjkl"]
+	path = nbconvertjkl
+	url = https://github.com/nancynobody/nbconvertjkl.git
