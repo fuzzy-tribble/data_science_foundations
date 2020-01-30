@@ -8,9 +8,10 @@ title: Data Science Mastery
 author: nancynobody
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  The purpose of this site is to help you become comfortable in core Python concepts.
-  It was originally written with data science practitioners in mind but is applicable
-  to anyone learning Python or wanting to brush up on it if you haven't used it for a while.
+  The purpose of this site is to help you master the foundational skills
+  needed to be a data scientists. We cover the four most important Python libraries
+  and also linear algebra foundations and algorithms.
+
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # baseurl: "" # the subpath of your site, e.g. /blog
 # twitter_username: nancynobody
@@ -27,9 +28,9 @@ nb_info: >-
   <!--NB_INFO-->
   <sub><sup>
   The content for this site available 
-  <a href="https://github.com/nancynobody/python3_fluency">on GitHub</a>. 
+  <a href="https://github.com/nancynobody/data_science_foundations">on GitHub</a>. 
   If you want to launch the notebooks interactively click on the binder stamp below.
-  <a href="https://mybinder.org/v2/gh/nancynobody/python3_fluency/master"><img src="https://mybinder.org/badge_logo.svg" alt="Binder"></a>
+  <a href="https://mybinder.org/v2/gh/nancynobody/data_science_foundations/master"><img src="https://mybinder.org/badge_logo.svg" alt="Binder"></a>
   </sup></sub>
 
 # Customize navigation links
